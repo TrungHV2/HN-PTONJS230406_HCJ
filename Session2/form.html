@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Thông tin liên hệ</legend>
+            <p><b>Nhập văn bản</b><input type="text" name="" placeholder="Hiển thị khi chưa nhập nội dung"
+                    value="Default value" required></p>
+            <p>
+                <label for="tuoi">Nhập số</label>
+                <input id="tuoi" type="number" step="10" max="100" min="0"></p>
+            <p><b>Nhập text định dạng email</b><input type="email"></p>
+        </fieldset>
+        <p><b>Ngày tháng</b><input type="date"></p>
+        <p><b>Thời gian</b><input type="time"></p>
+        <p>
+            <b>Chọn màu sắc</b>
+            <input type="color"></p>
+        <p><b>Chọn file</b><input type="file" multiple></p>
+        <p><b>Slide</b><input type="range" max="100" min="0" step="1"></p>
+        <p>
+            <b>Giới tính</b>
+            
+            <label for="male">
+                <input type="radio" id="male" name="nhom1">Nam
+            </label>
+            
+            <label for="female">
+                <input type="radio" id="female" name="nhom1">Nữ
+            </label>
+            <input type="radio" checked name="nhom1">
+        </p>
+        <p>
+            <b>Lựa chọn nhiều</b>
+            <input type="checkbox" name="nhom2">
+            <input type="checkbox" checked name="nhom2">
+            <input type="checkbox" name="nhom2">
+        </p>
+
+        <select name="" multiple>
+            <option value="1">1</option>
+            <option value="1">2</option>
+            <option value="1">3</option>
+            <option value="1">4</option>
+            <option value="1">5</option>
+            <option value="1">6</option>
+        </select>
+
+        <textarea name="" id="" cols="30" rows="3"></textarea>
+
+        <button type="submit">Gửi thông tin đi</button>
+        <button type="reset">Làm mới form</button>
+        <button type="button">Ko hành động gì với form</button>
+    </form>
+</body>
+
+</html>
