@@ -1,0 +1,18 @@
+- Các áp dụng CSS vào HTML
+    + Inline: viết trực tiếp vào tag, thuộc tính style
+    + External: Viết vào file .css, liên kết với HTML bằng thẻ link
+    + Internal: viết trong file .html, trong cặp thẻ style
+- Cú pháp viết CSS
+    selector {
+        property: value;
+        property1: value1;
+    }
+- Các loại bộ chọn:
+    + Tên thẻ: h1, h2, h3, ...
+    + Id: #ten_id
+    + Class: .ten_class
+    + Thuộc tính: [ten_thuộc_tính='giá_trị_thuộc_tính']
+- Các thuộc tính định dạng CSS
+    + Text
+    + Background
+    + Block

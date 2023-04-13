@@ -1,0 +1,46 @@
+h3 {
+    color: green;
+}
+h1 {
+    /* Định dạng text */
+    text-align: center; /*căn lề chữ*/
+    text-decoration: line-through; /*trang trí gạch chữ*/
+    text-shadow: 2px 2px 0px #000; /*Tạo bóng chữ*/
+    text-transform: capitalize; /*Chuyển đổi chữ hoa, thường*/
+    color: red; /*màu chữ*/
+    /* Font */
+    font-size: 40px; /*Kích thước chữ*/
+    font-family: Arial, Tahoma, sans-serif; /*Kiểu font chữ*/
+    font-style: italic; /*In nghiêng hoặc đứng*/
+    font-weight: bold; /*Độ đậm nhạt nét chữ*/
+}
+p {
+    text-indent: 50px; /*thụt đầu dòng đoạn văn*/
+}
+.css_background {
+    /*Block*/
+    /* Viền */
+    border: 5px solid red; /*Định dạng viền*/
+    border-top-style: dashed;
+    border-color: blue;
+    border-right-color: red;
+    /* Bo góc */
+    border-radius: 15px 25px 35px 45px;
+    /* Căn lề */
+    padding: 30px 40px; /*Khoảng viền với nội dung bên trong*/
+    margin: 30px; /*Khoảng cách từ viền với nội dung xung quanh*/
+    /* Kích thước */
+    width: 550px;
+    height: 550px;
+    min-height: 50px;
+    /* Tạo bóng */
+    box-shadow: 15px -15px 7px #000;
+
+    /* Nền */
+    background-color: pink;
+    background-image: url('imgs/bg_icon.png');
+    background-size: 200px auto;
+    background-repeat: no-repeat;
+    background-position: center 30px;
+    /* background-attachment: fixed; */
+}

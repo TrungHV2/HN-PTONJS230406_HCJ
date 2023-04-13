@@ -1,0 +1,16 @@
+.box {
+    width: 50%;
+    height: 100px;
+    float: left;
+}
+.div1 {background-color: red;}
+.div2 {background-color: blue;}
+.div3 {background-color: black;}
+.div4 {background-color: green;}
+.div5 {background-color: violet;}
+
+.wrap::after {
+    content: '';
+    display: block;
+    clear: both;
+}

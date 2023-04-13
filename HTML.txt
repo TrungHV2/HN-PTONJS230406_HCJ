@@ -1,0 +1,72 @@
+- HTML
+- Bố cục các thành phần trong trang web
+    + Header
+    + Navigation
+    + Content
+        * Main Content
+        * Sidebar
+    + Footer
+- file giao diện web .html
+- Cấu trúc các thẻ cở bản tạo lên trang web
+    + <!DOCTYPE html>
+    + <html>
+    + <head>
+        * <meta>
+        * <title>
+    + <body>
+- Các thẻ phân chia theo 2 loại
+    + Thẻ block
+        <div></div>
+        <h1></h1> -> <h6></h6>
+        <p></p>
+        <ul>
+            <li></li>
+        </ul>
+        <ol>
+            <li></li>
+        </ol>
+    + Thẻ Inline
+        <a></a>
+        <b></b> | <strong></strong>
+        <u></u>
+        <i></i>
+        <sup></sup>
+        <sub></sub>
+        <span></span>
+        <img />
+        <audio></audio>
+        <video></video>
+- Định dạng bảng
+    <table border="" cellspacing="" cellpadding="" width="">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="" colspan=""></td>
+            </tr>
+        </tbody>
+    </table>
+- Định dạng biểu mẫu (form)
+    + from
+        input
+            type:
+                text: văn bản
+                number: nhập số
+                email: text theo định dạng email
+                date: ngày tháng
+                time: thời gian
+                color: lựa chọn màu
+                file: upload file
+                range: chọn giá trị bằng Slide
+                radio: lựa chọn 1
+                checkbox: lựa chọn nhiều
+        select > option
+        textarea
+        button
+            type:
+                submit: gửi thông tin trên form
+                reset: làm mới form
+                button: không tác động đến form
