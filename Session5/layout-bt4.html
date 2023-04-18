@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        body {padding: 0;margin: 0}
+        * {box-sizing: border-box;}
+        .feature-item {
+            border: 1px solid red;
+            min-height: 50px;
+        }
+
+
+
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col {padding: 0 15px;}
+        .w33 {width: 33.333333%;}
+
+
+
+
+
+
+        .title {
+            text-align: center;
+        }
+        .feature-item {
+            background-color: #fff;
+            margin-bottom: 30px;
+        }
+        .item-img {
+            background-color: #06c;
+            min-height: 150px;
+        }
+        h1,h2,h3,h4,h5,h6 {margin-top: 0;}
+        .feture-desc {
+            padding: 10px;
+        }
+        .wrap {
+            background-color: #ccc;
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .w33 {width: 50%;}
+            .row {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 576px) {
+            .w33 {width: 100%;}
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="title">
+            <h2>Our Services <i class="fa fa-facebook" aria-hidden="true"></i><i class="fa fa-s15"></i></h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum nesciunt quos iste consequatur et minus. Eos quasi delectus libero, quaerat molestias maiores vitae velit non, perferendis ipsa ducimus. Dolores, qui.</p>
+        </div>
+        <div class="feature">
+            <div class="row">
+                <div class="col w33">
+                    <div class="feature-item">
+                        <div class="item-img"></div>
+                        <div class="feture-desc">
+                            <h3>Web UI</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dicta nisi vel dolorum minima facere!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col w33">
+                    <div class="feature-item">
+                        <div class="item-img"></div>
+                        <div class="feture-desc">
+                            <h3>Web UI</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dicta nisi vel dolorum minima facere!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col w33">
+                    <div class="feature-item">
+                        <div class="item-img"></div>
+                        <div class="feture-desc">
+                            <h3>Web UI</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dicta nisi vel dolorum minima facere!</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
