@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var numbers = [1, 4, 6, 8, 2, 8, -3434, 34, -535, -345345435, 435, -43543, 543, 5];
+
+        function ktSoDuong(num) {
+            if (num < 0)
+                return false;
+            else
+                return true;
+        }
+
+        function timSoDuong(arr) {
+            for (let item of arr) {
+                if (ktSoDuong(item))
+                    console.log(item);
+            }
+        }
+        function ktSoAm(num) {
+            if (num < 0)
+                return true;
+            else
+                return false;
+        }
+
+        function timSoAm(arr) {
+            for (let item of arr) {
+                if (ktSoAm(item))
+                    console.log(item);
+            }
+        }
+
+        function timKiem(arr, callback) {
+            for (let item of arr) {
+                if (callback(item))
+                    console.log(item);
+            }
+        }
+
+        function sapXepMang(arr, callback) {
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i+1; j < arr.length; j++) {
+                    if (callback(arr[i], arr[j])){
+                        let temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+        }
+
+        timSoDuong(numbers);
+        timSoAm(numbers);
+        console.log("Function Callback")
+        timKiem(numbers, num => num >= 0);
+        timKiem(numbers, num => num < 0);
+
+        sapXepMang(numbers, (n1, n2) => n1 > n2);
+        sapXepMang(numbers, (n1, n2) => n1 < n2);
+        console.log(numbers);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Khai báo mảng
+        var numbers = [];
+        // Gán giá trị 
+        numbers[0] = 1;
+        numbers[1] = 2;
+        numbers[2] = 3;
+        numbers[3] = 4;
+        numbers[4] = 5;
+        numbers[5] = 6;
+        console.log(numbers);
+        // Duyệt mảng
+        // console.log(numbers[0]);
+        // console.log(numbers[1]);
+        // console.log(numbers[2]);
+        // console.log(numbers[3]);
+        // console.log(numbers[4]);
+        // console.log(numbers[5]);
+        console.log('for');
+        for (let i = 1; i < numbers.length; i += 2) {
+            console.log(numbers[i]);
+        }
+        // for ... in
+        console.log('for...in');
+        for (let key in numbers) {
+            console.log(numbers[key]);
+        }
+        // for ... of
+        console.log('for...of');
+        for (let v of numbers) {
+            console.log(v);
+        }
+
+        var arr = [];
+        arr['name'] = "TrungHV";
+        arr['phone'] = '0962229893';
+        console.log(arr);
+    </script>
+</body>
+</html>

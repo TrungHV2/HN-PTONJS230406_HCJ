@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Định nghĩa hàm
+        function tenHam(thamSo) {
+            // Câu lệnh
+            console.log(thamSo);
+        }
+        // Gọi hàm
+        tenHam('giá trị truyền vào cho tham số');
+
+        // Hàm có giá trị trả về
+        function hamCoGiaTriTraVe() {
+            return "Giá trị trả về sau khi hàm thực thi";
+        }
+        hamCoGiaTriTraVe();
+        tenHam(hamCoGiaTriTraVe());
+
+        function tinhTong(a, b) {
+            let tong = a + b;
+            return tong;
+        }
+        var tong = tinhTong(16,57);
+        console.log(tong);
+
+        var expFunc = function(ts) {
+            // Khối lệnh của hàm
+            console.log(ts);
+        }
+
+        expFunc('Function Expression');
+
+        (function(ts) {
+            // Khối lệnh của hàm
+            console.log(ts);
+        })("IIFE");
+
+        var arrowFunc = (ts) => console.log(ts);
+        arrowFunc('Arrow Function');
+    </script>
+</body>
+</html>

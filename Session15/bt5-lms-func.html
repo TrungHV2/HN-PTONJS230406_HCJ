@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function chuanHoaChuoi(planText) {
+            let textResult = [];
+            // Tách chuỗi thành mảng
+            let arr = planText.split(' ');
+            // Duyệt mảng từng từ trong chuỗi và chuẩn hóa
+            for (let word of arr) {
+                let firstChar = word.charAt(0).toLocaleUpperCase();
+                let result = firstChar + word.toLocaleLowerCase().substring(1);
+                textResult.push(result);
+            }
+            console.log(textResult.join(' '));
+        }
+        function chuanHoaChuoi1(planText) {
+            let textResult = planText.toLocaleLowerCase();
+            for (let i = 0; i < textResult.length; i++) {
+                if (textResult.charAt(i) == ' ') {
+                    textResult.charAt(i + 1).toLocaleUpperCase();
+                }
+            }
+            console.log(textResult);
+        }
+        var txt = "start index up to and excluding the end index, or to the end of the";
+        chuanHoaChuoi(txt);
+        chuanHoaChuoi1(txt);
+    </script>
+</body>
+</html>
