@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" width="50%">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            <tr>
+                <td>1</td>
+                <td>Nam</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // Cho mảng tên danh sách sinh viên
+        var students = ['Nam', 'Vinh', 'Quyết', 'Dũng', 'Nhi'];
+        // Hiển thị danh sách tên sinh viên lên table
+        var tbody = document.getElementById('list');
+        var rows = '';
+        for (let i = 0; i < students.length; i++) {
+            rows += `<tr>
+                        <td>${i + 1}</td>
+                        <td>${students[i]}</td>
+                    </tr>`;
+        }
+        tbody.innerHTML = rows;
+    </script>
+</body>
+</html>

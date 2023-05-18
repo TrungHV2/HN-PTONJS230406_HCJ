@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" onclick="btn_Click()">Click</button>
+    <script>
+        //Cách 1:
+        // document.getElementById('btn').addEventListener('click', function() {
+        //     alert('Clicked!');
+        // })
+
+        //Cách 2:
+        // function btn_Click() {
+        //     alert('Cách2');
+        // }
+
+        // Cách 3:
+        document.getElementById('btn').onclick = function() {
+            alert('Cách 3');
+        }
+    </script>
+</body>
+</html>

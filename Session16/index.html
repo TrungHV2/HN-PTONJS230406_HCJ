@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="getById" title="Tiêu đề" style="color:red"><span>getElementById</span></h1>
+    <h1>getElementsByTagNam</h1>
+    <h1 class="getByClass">getElementsByClassName</h1>
+    <div class="getByClass" id="content"></div>
+
+
+
+    <script>
+        console.log(document.getElementById('getById'));
+        console.log(document.getElementsByTagName('h1'));
+        console.log(document.getElementsByClassName('getByClass'));
+        console.log(document.querySelector('.getByClass'));
+        console.log(document.querySelectorAll('.getByClass'));
+        // Xác định phần tử
+        var h1 = document.getElementById('getById');
+        // Đưa ra chỉ thị
+        h1.innerHTML = '<u>Thay đổi nội dung</u>';
+        console.log(h1.innerHTML);
+        console.log(h1.attributes);
+        h1.style.color = 'blue';
+        console.log(h1.style.color);
+        h1.setAttribute('title', 'Thay đổi thuộc tính title');
+
+        // Xác định phần tử
+        var element = document.getElementsByClassName('getByClass');
+        element[0].innerHTML = 'Text thay đổi';
+
+        // Thêm bớt phần tử HTML
+        var cnt = document.getElementById('content');
+        var newH1 = document.createElement('h1');
+        newH1.innerText = 'Thêm nội dung';
+        cnt.appendChild(newH1);
+        var newH2 = document.createElement('h2');
+        newH2.innerText = 'Nội dung thay thế';
+        cnt.replaceChild(newH2, newH1);
+        cnt.removeChild(newH2);
+        cnt.remove();
+
+        document.write('<h1>document.write()</h1>');
+    </script>
+</body>
+</html>

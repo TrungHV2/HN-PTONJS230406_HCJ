@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        - Viết javascript khi click button#btnAdd thêm thông tin sinh viên gồm tên (input#txtName), email(input#txtEmail), số điện thoại(input#txtPhone) vào <table>
+        - Xử lý sự kiện double click vào <tr> để xóa thông tin sinh viên, trước khi xóa, bật lên popup confirm, người dùng chọn Yes thì xóa, Cancle thì giữ nguyên.
+        - Khi thêm sinh viên, có kiểm tra không nhập trùng thông tin email và số điện thoại
+    -->
+    <div>
+        <h2>Thêm sinh viên</h2>
+        <div>
+            <input type="text" id="txtName" placeholder="Tên sinh viên">
+            <input type="text" id="txtEmail" placeholder="Email">
+            <input type="text" id="txtPhone" placeholder="Số điện thoại">
+            <button id="btnAdd">Thêm</button>
+        </div>
+        <table border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>SĐT</th>
+                </tr>
+            </thead>
+            <tbody id="list"></tbody>
+        </table>
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>
