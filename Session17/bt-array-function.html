@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Thông tin sinh viên</legend>
+            <p><b>Mã SV</b> <input type="text" id="txtId"></p>
+            <p><b>Họ tên</b> <input type="text" id="txtName"></p>
+            <p><b>Email</b> <input type="text" id="txtEmail"></p>
+            <fieldset>
+                <legend>Điểm</legend>
+                <div>
+                    <p><b>Môn</b> <input type="text" class="txtSubject"> | <b>Điểm</b> <input type="number"
+                            class="txtMark">
+                        <button type="button">+</button>
+                    </p>
+                </div>
+                <div>
+                    <p><b>Môn</b> <input type="text" class="txtSubject"> | <b>Điểm</b> <input type="number"
+                            class="txtMark">
+                        <button type="button">-</button>
+                    </p>
+                </div>
+            </fieldset>
+            <br>
+            <button type="button">Thêm</button>
+            <button type="button">Lưu</button>
+        </fieldset>
+    </form>
+    <h2>Danh sách sinh viên</h2>
+    <table border="1" cellpadding="5" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Mã SV</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Điểm</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            <tr>
+                <td>SV01</td>
+                <td>Nguyễn Văn Nam</td>
+                <td>namnv@gmail.com</td>
+                <td>
+                    <p><b>Toán: </b>6</p>
+                    <p><b>Lý: </b>7.5</p>
+                    <p><b>Văn: </b>8</p>
+                </td>
+                <td>
+                    <button>Sửa</button>
+                    <button>Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // dữ liệu mẫu về cấu trúc dữ liệu của sinh viên lưu trong mảng
+        var students = [];
+        // thông tin cơ bản sinh viên
+        var st = [];
+        st['id'] = 'SV01';
+        st['name'] = 'Nguyễn Văn Nam';
+        st['email'] = 'email@gmail.com';
+        // Điểm
+        var marks = [];
+        marks['Văn'] = 6;
+        marks['Toán'] = 7;
+        st['marks'] = marks;
+        // Lưu vào mảng students
+        students[0] = st;
+        console.log(students);
+    </script>
+</body>
+
+</html>

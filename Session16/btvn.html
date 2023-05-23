@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <!--
         - Viết javascript khi click button#btnAdd thêm thông tin sinh viên gồm tên (input#txtName), email(input#txtEmail), số điện thoại(input#txtPhone) vào <table>
@@ -33,7 +35,59 @@
         </table>
     </div>
     <script>
+        var txtName = document.getElementById('txtName');
+        var txtEmail = document.getElementById('txtEmail');
+        var txtPhone = document.getElementById('txtPhone');
+        var btnAdd = document.getElementById('btnAdd');
+        var list = document.getElementById('list');
+        var counter = 1;
+
+        var students = [];
+
+        btnAdd.addEventListener('click', function () {
+
+            var name = txtName.value.trim();
+            var email = txtEmail.value.trim();
+            var phone = txtPhone.value.trim();
+
+            // Kiểm tra nhập trùng thông tin email và số điện thoại
+            var isDuplicate = students.some(function (student) {
+                return student.email === email || student.phone === phone;
+            });
+
+            if (name && email && phone && !isDuplicate) {
+                students.push({
+                    name: name,
+                    email: email,
+                    phone: phone
+                });
+
+                var newRow = document.createElement('tr');
+
+                newRow.innerHTML = '<td>' + counter + '</td>' +
+                    '<td>' + name + '</td>' +
+                    '<td>' + email + '</td>' +
+                    '<td>' + phone + '</td>';
+
+                list.appendChild(newRow);
+
+                newRow.addEventListener('dblclick', function() {
+                    if (confirm('Bạn có muốn xóa không?')) {
+                        alert('Đã xóa!');
+                    }
+                })
+
+                // Tăng biến đếm STT
+                counter++;
+
+                // Xóa nội dung trong các ô input
+                txtName.value = '';
+                txtEmail.value = '';
+                txtPhone.value = '';
+            }
+        });
 
     </script>
 </body>
+
 </html>
