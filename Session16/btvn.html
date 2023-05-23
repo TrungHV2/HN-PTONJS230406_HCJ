@@ -35,17 +35,18 @@
         </table>
     </div>
     <script>
+        // Lấy các đối tượng DOM cần tương tác
         var txtName = document.getElementById('txtName');
         var txtEmail = document.getElementById('txtEmail');
         var txtPhone = document.getElementById('txtPhone');
         var btnAdd = document.getElementById('btnAdd');
         var list = document.getElementById('list');
         var counter = 1;
-
+        // Khai báo mảng lưu thông tin sinh viên
         var students = [];
 
         btnAdd.addEventListener('click', function () {
-
+            // Lấy giá trị trên form
             var name = txtName.value.trim();
             var email = txtEmail.value.trim();
             var phone = txtPhone.value.trim();
@@ -54,23 +55,24 @@
             var isDuplicate = students.some(function (student) {
                 return student.email === email || student.phone === phone;
             });
-
+            // Kiểm tra nếu thông tin ko bỏ trống, ko trùng email hoặc số điện thoại
             if (name && email && phone && !isDuplicate) {
+                // Thêm mới sinh viên vào mảng
                 students.push({
                     name: name,
                     email: email,
                     phone: phone
                 });
-
+                // Tạo mới đối tượng DOM <tr>, đại diện cho việc hiển thị dữ liệu sinh viên
                 var newRow = document.createElement('tr');
-
+                // Thêm <td> hiển thị từng thông tin vào hàng trên bảng (<tr> trong <table>)
                 newRow.innerHTML = '<td>' + counter + '</td>' +
                     '<td>' + name + '</td>' +
                     '<td>' + email + '</td>' +
                     '<td>' + phone + '</td>';
-
+                // Thêm hàng vào bảng (thêm <tr> vào table>tbody)
                 list.appendChild(newRow);
-
+                // Thêm xử lý sự kiện doubleclick vào <tr> vừa tạo
                 newRow.addEventListener('dblclick', function() {
                     if (confirm('Bạn có muốn xóa không?')) {
                         alert('Đã xóa!');

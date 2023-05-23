@@ -17,16 +17,10 @@
             <p><b>Email</b> <input type="text" id="txtEmail"></p>
             <fieldset>
                 <legend>Điểm</legend>
-                <div>
-                    <p><b>Môn</b> <input type="text" class="txtSubject"> | <b>Điểm</b> <input type="number"
+                <div class="mark">
+                    <p><b>Môn</b> <input type="text" class="txtSubject">  <b>Điểm</b> <input type="number"
                             class="txtMark">
-                        <button type="button">+</button>
-                    </p>
-                </div>
-                <div>
-                    <p><b>Môn</b> <input type="text" class="txtSubject"> | <b>Điểm</b> <input type="number"
-                            class="txtMark">
-                        <button type="button">-</button>
+                        <button class="btn btn-plus" type="button">+</button>
                     </p>
                 </div>
             </fieldset>
@@ -79,6 +73,16 @@
         // Lưu vào mảng students
         students[0] = st;
         console.log(students);
+        document.querySelector('.btn-plus').onclick = function() {
+            let html = this.parentElement.parentElement.innerHTML;
+            let divMark = document.createElement('div');
+            divMark.innerHTML = html;
+            divMark.querySelector('button').textContent = '-';
+            divMark.querySelector('button').addEventListener('click', function() {
+                this.parentElement.parentElement.remove();
+            })
+            this.parentElement.parentElement.parentElement.appendChild(divMark);
+        }
     </script>
 </body>
 
