@@ -15,20 +15,35 @@
             <p><b>Mã SV</b> <input type="text" id="txtId"></p>
             <p><b>Họ tên</b> <input type="text" id="txtName"></p>
             <p><b>Email</b> <input type="text" id="txtEmail"></p>
-            <fieldset>
+            <fieldset id="marks">
                 <legend>Điểm</legend>
                 <div class="mark">
-                    <p><b>Môn</b> <input type="text" class="txtSubject">  <b>Điểm</b> <input type="number"
+                    <p>
+                        <b>Môn</b> 
+                        <input type="text" class="txtSubject">  <b>Điểm</b> <input type="number"
                             class="txtMark">
                         <button class="btn btn-plus" type="button">+</button>
                     </p>
                 </div>
+                
             </fieldset>
             <br>
-            <button type="button">Thêm</button>
-            <button type="button">Lưu</button>
+            <button type="button" id="btnAdd">Thêm</button>
+            <button type="button" id="btnSave">Lưu</button>
         </fieldset>
     </form>
+
+    <form action="">
+        <fieldset>
+            <legend>Tìm kiếm sinh viên</legend>
+            <!-- 
+                Viết javascript xử lý sự kiện người dùng nhập tên sinh viên vào input, bảng dưới sẽ chỉ hiện thị các sinh viên (trong ds đã lưu) mà tên có từ khóa người dùng nhập.
+                VD: người dùng nhập "ng" sẽ hiển thị tất cả sinh viên trong tên có chứa chữ "ng", Nguyễn Văn Nam, Hương, Thắng
+             -->
+            <input type="text" placeholder="Nhập tên sinh viên...">
+        </fieldset>
+    </form>
+
     <h2>Danh sách sinh viên</h2>
     <table border="1" cellpadding="5" cellspacing="0" width="100%">
         <thead>
@@ -41,23 +56,14 @@
             </tr>
         </thead>
         <tbody id="list">
-            <tr>
-                <td>SV01</td>
-                <td>Nguyễn Văn Nam</td>
-                <td>namnv@gmail.com</td>
-                <td>
-                    <p><b>Toán: </b>6</p>
-                    <p><b>Lý: </b>7.5</p>
-                    <p><b>Văn: </b>8</p>
-                </td>
-                <td>
-                    <button>Sửa</button>
-                    <button>Xóa</button>
-                </td>
-            </tr>
         </tbody>
     </table>
     <script>
+        let btnAdd = document.getElementById('btnAdd');
+        let btnSave = document.getElementById('btnSave');
+        let txtId = document.getElementById('txtId');
+        let txtName = document.getElementById('txtName');
+        let txtEmail = document.getElementById('txtEmail');
         // dữ liệu mẫu về cấu trúc dữ liệu của sinh viên lưu trong mảng
         var students = [];
         // thông tin cơ bản sinh viên
@@ -73,15 +79,134 @@
         // Lưu vào mảng students
         students[0] = st;
         console.log(students);
-        document.querySelector('.btn-plus').onclick = function() {
-            let html = this.parentElement.parentElement.innerHTML;
-            let divMark = document.createElement('div');
-            divMark.innerHTML = html;
-            divMark.querySelector('button').textContent = '-';
-            divMark.querySelector('button').addEventListener('click', function() {
-                this.parentElement.parentElement.remove();
+
+        function initEdit(id) {
+            // Lấy lại giá trị của sinh viên cần sửa
+            let st = students.find(x => x.id == id);
+            // Đưa lại lên form
+            txtId.value = st.id;
+            txtName.value = st.name;
+            txtEmail.value = st.email;
+            let i = 0;
+            // Lấy tất cả các form nhập điểm hiện có
+            let domMarks = document.querySelectorAll('.mark');
+            // Hiển thị các điểm đang có của sinh viên lên form
+            for (let k in st.marks) {
+                // lấy form điểm tương
+                // điểm thứ 1 <=> domMarks[0]
+                // điểm thứ 2 <=> domMarks[1]
+                // ...
+                let mark = domMarks[i++]; 
+                if (mark) {
+                    mark.querySelector('.txtSubject').value = k;
+                    mark.querySelector('.txtMark').value = st.marks[k];
+                } else {
+                    mark = document.createElement('div');
+                    createMark(mark, k, st.marks[k]);
+                }
+                console.log(mark);
+            }
+            // Xóa form điểm thừa 
+            // Ví dụ: sv chỉ có 2 điểm mà form hiển thị điểm(domMarks) có 5, thì xóa các form domMarks[2], domMarks[3], domMarks[4] đi
+            let totalMarks = Object.keys(st.marks).length;
+            for (let j = totalMarks; j < domMarks.length; j++) {
+                domMarks[j].remove();
+            }
+        }
+
+        function deleteClick(id) {
+            // confirm để hiển thị pop-up có 2 lựa chọn Ok (true), Cancel(false)
+            if (confirm('Bạn có muốn xóa không?')) {
+                // Tìm vị trí của phần tử muốn xóa (dựa vào id)
+                let index = students.findIndex(x => x.id == id);
+                // Xóa
+                students.splice(index, 1);
+                loadData();
+            }
+        }
+
+        function loadData() {
+            let rows = '';
+            for (let item of students) {
+                // Thông tin chung
+                rows += `<tr>
+                            <td>${item.id}</td>
+                            <td>${item.name}</td>
+                            <td>${item.email}</td>`;
+                // Điểm
+                rows += '<td>';
+                for (let k in item.marks) {
+                    rows += `<p><b>${k}: </b>${item.marks[k]}</p>`;
+                }
+                rows += '</td>';
+                // Hành động
+                rows += `<td>
+                            <button onclick="initEdit('${item.id}')">Sửa</button>
+                            <button onclick="deleteClick('${item.id}')">Xóa</button>
+                        </td>`;
+                rows += '</tr>';
+            }
+            document.getElementById('list').innerHTML = rows;
+        }
+
+        function createMark(el, subject = '', mark = 0) {
+            el.className = 'mark';
+            el.innerHTML = `<p>
+                                    <b>Môn</b> 
+                                    <input type="text" class="txtSubject">  <b>Điểm</b> <input type="number"
+                                        class="txtMark">
+                                    <button class="btn btn-minus" type="button">-</button>
+                                </p>`;
+            el.querySelector('.txtSubject').value = subject;
+            el.querySelector('.txtMark').value = mark;
+            // Thêm điểm vào fieldset các form nhập điểm
+            document.getElementById('marks').appendChild(el); 
+            // Thêm xử lý sự kiện cho <button>-</button>
+            el.querySelector('.btn-minus').addEventListener('click', function() {
+                // .parentNode: tìm ra phân tử cha chứa phần tử hiện tại
+                // this.parentNode => <p>
+                // this.parentNode.parentNode => <div class="mark">
+                this.parentNode.parentNode.remove();
+                //document.getElementById('marks').removeChild(el);
             })
-            this.parentElement.parentElement.parentElement.appendChild(divMark);
+        }
+        
+        function getData(obj) {
+            // Lấy data trên form gán vào cho sinh viên
+            obj['id'] = txtId.value;
+            obj['name'] = txtName.value;
+            obj['email'] = txtEmail.value;
+            // Điểm
+            let marks = [];
+            document.querySelectorAll('.mark').forEach(function(el) {
+                let key = el.querySelector('.txtSubject').value;
+                let value = el.querySelector('.txtMark').value;
+                marks[key] = value;
+            })
+            obj['marks'] = marks;
+        }
+
+        loadData();
+
+        document.querySelector(".btn-plus").onclick = function() {
+            let divMark = document.createElement('div');
+            createMark(divMark);        
+        }
+
+        btnAdd.onclick = function() {
+            let st = [];
+            getData(st);
+            // Lưu vào mảng students
+            students.push(st);
+            loadData();
+        }
+
+        btnSave.onclick = function() {
+            // Tìm sinh viên cần update trong mảng
+            let _oldSt = students.find(x => x.id == txtId.value);
+            // Lấy thông tin trên form về để update
+            getData(_oldSt);
+            loadData();
         }
     </script>
 </body>
