@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let id = 'SV01';
+        let name = 'Nam';
+        let email = 'nam@gmail.com';
+
+        // let id1 = 'SV01';
+        // let name1 = 'Nam';
+        // let email1 = 'nam@gmail.com';
+
+        // let id2 = 'SV01';
+        // let name2 = 'Nam';
+        // let email2 = 'nam@gmail.com';
+
+        let st1 = {
+            id: 'SV01',
+            name: 'nam',
+            email: 'nam@gmail.com',
+            info: function() {
+                console.log(this.name);
+            }
+        };
+        let st2 = {
+            id: 'SV01',
+            name: 'nam',
+            email: 'nam@gmail.com',
+            info: function() {
+                console.log(this.name);
+            }
+        };
+        st1.info();
+        console.log(st2);
+        console.log(st2.name);
+        // Định nghĩa class
+        class StudentModel {
+            constructor(id, name, email) {
+                this.id = id;
+                this.name = name;
+                this.email = email;
+            }
+            info() {
+                console.log(this.id, this.name, this.email);
+            }
+        }
+        function Student(id, name, email) {
+            // Khai báo thuộc tính
+            this.id = id;
+            this.name = name;
+            this.email = email;
+            // Hành vi
+            this.info = function() {
+                console.log(this.id, this. name, this.email);
+            }
+        }
+        // Khởi tạo đối tượng
+        let st = new Student('SV11', 'Thanh', 'thanh@gmail.com');
+        st.info();
+        console.log(st);
+        let stClass = new StudentModel('SVCLASS', 'Class', 'class@gmail.com');
+        stClass.info();
+
+
+        let stObj = new Object();
+
+        stObj.id = 'SVOBJ';
+        stObj.name = 'Object';
+        stObj.email = 'object@gmail.com';
+        stObj.info = function() {
+            console.log(this.id, this.name, this.email);
+        }
+        stObj.info();
+    </script>
+</body>
+</html>

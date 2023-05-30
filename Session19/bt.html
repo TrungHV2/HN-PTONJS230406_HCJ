@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Bài 1,2
+        let person = {};
+        person.firstName = 'Nguyễn Văn';
+        person.lastName = 'Bình';
+
+        person.lastName = 'Hòa';
+
+        delete person.lastName;
+
+        person.checkEmpty = function() {
+            for (let k of Object.keys(this)) {
+                if (typeof(this[k]) != 'function')
+                    return true;
+            }
+            return false;
+        }
+        console.log(person.checkEmpty());
+        console.log(person);
+
+        // Bài 3
+        // Cách 1
+        // class Department {
+        //     constructor(slarys = []) {
+        //         this.slarys = slarys;
+        //     }
+        //     calculateSalary() {
+        //         let total = 0;
+        //         console.log("Tổng lương: " + this.slarys.reduce((acc, curr) => acc + curr, total));
+        //     }
+        // }
+        // let department = new Department([5000, 4500, 7000]);
+        // department.calculateSalary();
+
+        // Cách 2
+        class Employee {
+            constructor(id, name, salary) {
+                this.id = id;
+                this.name = name;
+                this.salary = salary;
+            }
+        }
+        class Department {
+            constructor(employees = []) {
+                this.employees = employees;
+            }
+            calculateSalary() {
+                let total = 0;
+                for (let e of this.employees) {
+                    total += e.salary;
+                }
+                console.log('Tổng lương: ' + total);
+            }
+        }
+        let emp1 = new Employee(1, 'Nam', 5000);
+        let emp2 = new Employee(2, 'Tú', 5000);
+        let emp3 = new Employee(3, 'Hoàng', 5000);
+
+        let emps = [emp1, emp2, emp3];
+
+        let depart = new Department(emps);
+        depart.calculateSalary();
+
+        // Bài 4
+        class Menu {
+            constructor(width = 0, height = 0, title = '') {
+                this.width = width;
+                this.height = height;
+                this.title = title;
+            }
+            doubleSize() {
+                for (let k of Object.keys(this)) {
+                    if (typeof(this[k]) == 'number') {
+                        this[k] = this[k] * 2;
+                    }
+                }
+            }
+        }
+        let menu = new Menu(200, 300, 'Main');
+        menu.doubleSize();
+        console.log(menu);
+
+        // Bài 5
+        class Calculator {
+            constructor(a = 0, b = 0) {
+                this.a = a;
+                this.b = b;
+            }
+
+            Read(a = 0, b = 0) {
+                this.a = a;
+                this.b = b;
+            }
+            Sum() {
+                return this.a + this.b;
+            }
+            Mul() {
+                return this.a * this.b;
+            }
+        }
+
+        let cal = new Calculator();
+        cal.Read(4, 5);
+        console.log("Tính tổng: " + cal.Sum());
+        console.log("Tính tích: " + cal.Mul());
+    </script>
+</body>
+</html>
