@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+        * {box-sizing: border-box;}
+        .wrap {
+            padding: 15px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        .col {
+            padding: 0 15px;
+        }
+        .col-30 {
+            width: 30%;
+        }
+        .col-70 {
+            width: 70%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .control-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-control {
+            width: 100%;
+            border: 1px solid #ddd;
+            outline: none;
+            padding: 7px 10px;
+            font-size: 14px;
+        }
+        .btn {
+            display: inline-block;
+            border: 1px solid #ddd;
+            padding: 7px 15px;
+            cursor: pointer;
+        }
+        .btn-info {
+            background-color: #1ab5e4;
+            border-color: #1ab5e4;
+            color: #fff;
+        }
+        .btn-success {
+            background-color: #139613;
+            border-color: #139613;
+            color: #fff;
+        }
+        .btn-warning {
+            background-color: #f1a026;
+            border-color: #f1a026;
+            color: #fff;
+        }
+        .btn-danger {
+            background-color: #d43d32;
+            border-color: #d43d32;
+            color: #fff;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        table tr > th,
+        table tr > td {
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        .label {
+            display: inline-block;
+            background-color: #ccc;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        .lbl-success {
+            background-color: #139613;
+            color: #fff;
+        }
+        .lbl-danger {
+            background-color: #d43d32;
+            color: #fff;
+        }
+        .form-search-sort {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="row">
+            <div class="col col-30">
+                <div class="form-group">
+                    <label for="" class="control-label">Mã sách</label>
+                    <input type="text" class="form-control" id="bookId">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Tên sách</label>
+                    <input type="text" class="form-control" id="bookName">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Giá sách</label>
+                    <input type="number" class="form-control" id="price">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Tác giả</label>
+                    <input type="text" class="form-control" id="author">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Trạng thái</label>
+                    <label for="bookStatus">
+                        <input type="checkbox" id="bookStatus"> Còn hàng
+                    </label>
+                </div>
+                <button class="btn btn-info" onclick="createBook()">Thêm mới</button>
+                <button class="btn btn-success" onclick="saveBook()">Lưu</button>
+            </div>
+            <div class="col col-70">
+                <div class="form-search-sort">
+                    <div class="row">
+                        <div class="col col-70">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm tên sách..." onkeyup="searchBook(event)">
+                        </div>
+                        <div class="col col-30">
+                            <select class="form-control" onchange="sortedBook(event)">
+                                <option value="">Mặc định</option>
+                                <option value="asc">Sắp xếp theo giá tăng dần</option>
+                                <option value="desc">Sắp xếp theo giá giảm dần</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th>Mã sách</th>
+                            <th>Tên sách</th>
+                            <th>Đơn giá</th>
+                            <th>Tác giả</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list-books">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        class Book {
+            constructor(bookId, bookName, price, author, bookStatus) {
+                this.bookId = bookId;
+                this.bookName = bookName;
+                this.price = price;
+                this.author = author;
+                this.bookStatus = bookStatus;
+            }
+            inputData() {
+                this.bookId = prompt('Nhập mã sách');
+                this.bookName = prompt('Nhập tên sách');
+                this.price = prompt('Nhập giá sách');
+                this.author = prompt('Nhập tác giả');
+                this.bookStatus = prompt('Nhập trạng thái (true/false)');
+            }
+            displayData() {
+                console.log('Mã sách: ' + this.bookId);
+                console.log('Tên sách: ' + this.bookName);
+                console.log('Giá sách: ' + this.price);
+                console.log('Tác giả: ' + this.author);
+                console.log('Trạng thái: ' + this.bookStatus);
+            }
+        }
+
+        let book = new Book('B01', 'Lập trình C++', 4500, 'RA', false);
+        let book1 = new Book('B02', 'Lập trình Java', 7000, 'RA', true);
+        let book2 = new Book('B03', 'Lập trình C', 5000, 'RA', true);
+        //book.inputData();
+        book.displayData();
+
+        // Khai báo mảng lưu danh sách các quyển sách
+        let books = [];
+        books.push(book);
+        books.push(book1);
+        books.push(book2);
+
+        function showBooks(data) {
+            let rows = '';
+            for (let b of data) {
+                rows += `<tr>
+                            <td>${b.bookId}</td>
+                            <td>${b.bookName}</td>
+                            <td>${b.price}</td>
+                            <td>${b.author}</td>
+                            <td>${b.bookStatus ? '<span class="label lbl-success">Còn hàng</span>' : '<span class="label lbl-danger">Hết hàng</span>'}</td>
+                            <td>
+                                <button class="btn btn-warning" onclick="initUpdate('${b.bookId}')">Sửa</button>
+                                <button class="btn btn-danger" onclick="deleteBook('${b.bookId}')">Xóa</button>
+                            </td>
+                        </tr>`;
+            }
+            document.getElementById('list-books').innerHTML = rows;
+        }
+
+        function createBook() {
+            // Lấy thông tin sách trên form
+            let b = getBookInfo();
+
+            // Đưa ra các điều kiện kiểm tra, ràng buộc (nếu có)
+            if (books.find(x => x.bookId === b.bookId)) {
+                alert('Mã sách đã tồn tại!');
+                return;
+            }
+
+            // Thêm vào mảng
+            books.push(b);
+            // Gọi làm hiển thị
+            showBooks(books);
+        }
+
+        function saveBook() {
+            // Lấy thông tin sách trên form
+            let b = getBookInfo();
+            // Tìm book cần update
+            let bookUpdate = books.find(x => x.bookId === b.bookId);
+            // Cập nhật thông tin vào
+            bookUpdate.bookName = b.bookName;
+            bookUpdate.price = b.price;
+            bookUpdate.author = b.author;
+            bookUpdate.bookStatus = b.bookStatus;
+            // Load lại thông tin danh sáhc
+            showBooks(books);
+            document.getElementById('bookId').disabled = false;
+        }
+
+        function deleteBook(bookId) {
+            if (confirm('Bạn có muốn xóa không?')) {
+                // Tìm vị trí sách muốn xóa
+                let index = books.findIndex(x => x.bookId === bookId);
+                //Xóa
+                books.splice(index, 1);
+                // Hiển thị lại danh sách
+                showBooks(books);
+            }
+        }
+
+        function initUpdate(bookId) {
+            // Tìm sách trong mảng dựa vào id
+            let b = books.find(x => x.bookId === bookId);
+            // Đưa thông tin lên form
+            document.getElementById('bookId').value = b.bookId;
+            document.getElementById('bookId').disabled = true;
+            document.getElementById('bookName').value = b.bookName;
+            document.getElementById('price').value = b.price;
+            document.getElementById('author').value = b.author;
+            document.getElementById('bookStatus').checked = b.bookStatus;
+        }
+
+        function getBookInfo() {
+            let bookId = document.getElementById('bookId').value;
+            let bookName = document.getElementById('bookName').value;
+            let price = document.getElementById('price').value;
+            let author = document.getElementById('author').value;
+            let bookStatus = document.getElementById('bookStatus').checked;
+
+            let book = new Book(bookId, bookName, price, author, bookStatus);
+            console.log(book);
+            return book;
+        }
+
+        function sortedBook(event) {
+            console.log('Sorting...');
+            let sort = event.target.value;
+            let result = [];
+            if (sort === 'asc') {
+                result = [...books].sort((b1, b2) => b1.price - b2.price);
+            } else if (sort === 'desc') {
+                result = [...books].sort((b1, b2) => b2.price - b1.price);
+            } else {
+                result = books;
+            }
+            showBooks(result);
+        }
+        
+        function searchBook(event) {
+            console.log('Searching...');
+            let key = event.target.value.toLocaleLowerCase();
+            let result = [...books].filter(x => x.bookName.toLocaleLowerCase().indexOf(key) >= 0);
+            showBooks(result);
+        }
+
+        showBooks(books);
+    </script>
+</body>
+</html>
