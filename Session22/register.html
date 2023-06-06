@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <!--
+        Sử dụng bootstrap tạo form đăng ký gồm, tài khoản, mật khẩu, xác nhận mật khẩu
+        Dùng jQuery xử lý chức năng đăng ký usre lưu vào localStorage
+    -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="my-form">
+                    <h3 class="text-center">Đăng ký tài khoản</h3>
+                    <div class="mb-3">
+                        <label for="user" class="form-label">Tài khoản</label>
+                        <input type="text" class="form-control" id="user">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mật khẩu</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm" class="form-label">Xác nhận mật khẩu</label>
+                        <input type="password" class="form-control" id="confirm">
+                    </div>
+                    <p class="text-center">
+                        <button class="btn btn-primary btn-register">Đăng ký</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.btn-register').click(function() {
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+
+                let username = $('#user').val();
+                let password = $('#password').val();
+                let confirm = $('#confirm').val();
+
+                if (users.find(x => x.username === username)) {
+                    alert('Tài khoản đã tồn tại');
+                    return;
+                }
+                if (password !== confirm) {
+                    alert('Mật khẩu không khớp');
+                    return;
+                }
+
+                users.push({
+                    username: username,
+                    password: password
+                })
+                localStorage.setItem('users', JSON.stringify(users));
+            })
+        })
+    </script>
+</body>
+</html>

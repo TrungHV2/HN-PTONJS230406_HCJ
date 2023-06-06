@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .txt-red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btnHide">hide</button>
+    <button class="btnShow">show</button>
+    <button class="btnToggle">toggle</button>
+    <div class="wrap" style="background-color: gray
+    ;">
+        <h1 class="txt">Selector</h1>
+        <h1 class="txt">Selector</h1>
+        <h1 class="txt">Selector</h1>
+        <h1 class="txt">Selector</h1>
+        <h1 class="txt">Selector</h1>
+        <h1 class="txt">Selector</h1>
+        <h1 class="txt">Selector</h1>
+        <h1 class="txt">Selector</h1>
+        <h1 class="txt">Selector</h1>
+        <input type="text" class="fullName">
+    </div>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Muốn tìm các phần tử nằm bên trong phần tử hiện tại
+            // $('selector').find('selctor1'); // tìm bên trong phần tử hiện tại
+
+            // Tìm phần tử cha chứa phần tử tiện tại
+            /* $('selector').parent(); => Phần tử cha gần nhất
+            $('selector').parents('selectorParent');
+            */
+
+            // Lấy các phần tử đồng cấp
+            // $("selector").siblings();
+
+            // jQuery
+            console.log($(".txt"));
+            $(".txt").click(function () {
+                $(this).addClass('txt-red');
+                $(this).siblings().removeClass('txt-red');
+            });
+            $('.fullName').keyup(function () {
+                alert($(this).val());
+            })
+            $('.fullName').on('focus', function () {
+                $(this).css({
+                    border: '1px solid red',
+                    outline: 'none'
+                })
+            })
+            $(document).on('blur', '.fullName', function () {
+                console.log('blur');
+                $('.fullName').css({
+                    border: '1px solid black',
+                    outline: 'none'
+                })
+            })
+
+            $('.btnHide').click(function() {
+                $('.wrap').hide(5000);
+            })
+            $('.btnShow').click(function() {
+                $('.wrap').show(5000);
+            })
+            $('.btnToggle').click(function() {
+                $('.wrap').toggle(5000);
+            })
+        })
+    </script>
+</body>
+
+</html>
